@@ -34,11 +34,13 @@ Install NVM from GitHub
 - csharpier
 - Golang
   
-## Neovim 
+## Neovim   
+
+_Have to give credit where it is due... Much of this config is taken from The Primeagen_
 ### If Neovim is desired then once installation is complete, follow below steps:
 #### Source Packer file - open packer file and in normal mode enter ":so <enter>"
 #### Sync Packer - in packer file enter ":PackerSync <enter>"
-
+  
 
 ### For Telescope below packages are installed
 #### ripgrep  
