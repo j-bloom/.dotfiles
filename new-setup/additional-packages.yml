@@ -1,0 +1,76 @@
+---
+
+- hosts: localhost
+  become: true
+  tasks:
+
+#####      Uncomment if i3wm is desired       #####
+  - name: Installing i3 
+    ansible.builtin.package:
+      name: i3
+
+  - name: Installing rofi for nicer package searching in i3
+    ansible.builtin.package:
+      name: rofi
+
+  - name: Installing curl
+    ansible.builtin.package:
+      name: curl
+
+  - name: Installing golang
+    ansible.builtin.package:
+      name: golang
+
+  - name: Installing python3-venv
+    ansible.builtin.package:
+      name: python3-venv
+
+  - name: Installing emacs
+    ansible.builtin.package:
+      name: emacs
+
+  - name: Installing ripgrep
+    ansible.builtin.package:
+      name: ripgrep
+
+  - name: Installing fd-find
+    ansible.builtin.package:
+      name: 
+        - fd-find
+        - fd
+
+  - name: Installing silversearcher
+    ansible.builtin.package:
+      name: 
+        - silversearcher-ag
+        - the_silver_searcher
+
+  - name: Installing GIMP
+    ansible.builtin.package:
+      name: gimp
+
+  - name: Installing OBS Studio and support packages
+    ansible.builtin.package:
+      name:
+        - v4l2loopback-dkms
+        - ffmpeg
+        - obs-studio
+
+  - name: Installing VLC media player
+    ansible.builtin.package:
+      name: vlc
+
+  - name: Install Terminator terminal
+    ansible.builtin.package:
+      name: terminator
+
+  - name: Install zsh
+    ansible.builtin.package:
+      name: zsh
+
+  - name: Install keepassxc
+    ansible.builtin.package:
+      name: keepassxc
+
+ 
+
