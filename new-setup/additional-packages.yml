@@ -72,5 +72,7 @@
     ansible.builtin.package:
       name: keepassxc
 
- 
+  - name: Install tmux
+    ansible.builtin.package:
+      name: tmux
 
