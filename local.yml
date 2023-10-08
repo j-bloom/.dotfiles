@@ -37,14 +37,14 @@
         - zsh
 
   - name: Install Window Manager and corresponding packages
-    packages:
+    package:
       name: 
         - arandr
         - i3
         - rofi
 
   - name: Install media packages
-    packages:
+    package:
       name: 
         - ffmpeg
         - gimp
