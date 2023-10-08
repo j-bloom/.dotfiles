@@ -55,15 +55,8 @@
     ansible.builtin.shell:
       cmd: sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-  # below are additonal tasks and packages that at distro specific
-  - include: ./new-setup/arch-ansible.yml
-    when: ansible_distribution in ["Archlinux", "Manjaro"]
-
   - include: ./new-setup/fedora-ansible.yml
     when: ansible_distribution in ["Fedora"]
-
-  - include: ./new-setup/debian-ansible.yml
-    when: ansible_distribution in ["Debian", "Linux Mint"]
 
 
 
