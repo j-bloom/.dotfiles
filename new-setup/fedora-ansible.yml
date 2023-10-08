@@ -7,7 +7,7 @@
         - the_silver_searcher
 
   - name: Install Language packages
-    packages:
+    package:
       name: 
         - golang
         - python3-pylint-venv
