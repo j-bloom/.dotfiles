@@ -1,0 +1,32 @@
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: j
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/j-bloom/dotfiles.git
+
+
+  #Cron jobs to update the system weekly based on system
+  - name:
+    cron:
+      name: ansible weekly update 
+      user: j
+      special_time: weekly
+      job: sudo apt update && sudo apt upgrade -y
+    when: ansible_distribution in ["Debian", "Linux Mint"]
+
+  - name:
+    cron:
+      name: ansible weekly update 
+      user: j
+      special_time: weekly
+      job: sudo dnf update 
+    when: ansible_distribution in ["Fedora"]
+
+  - name:
+    cron:
+      name: ansible weekly update 
+      user: j
+      special_time: weekly
+      job: sudo packman -Syu 
+    when: ansible_distribution in ["Archlinux", "Manjaro"]

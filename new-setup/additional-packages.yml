@@ -4,10 +4,15 @@
   become: true
   tasks:
 
+  - name: Update package repo cache
+    ansible.builtin.package:
+      update-cache: yes
+
 #####      Uncomment if i3wm is desired       #####
   - name: Installing i3 
     ansible.builtin.package:
       name: i3
+    when: ansible_distribution in ["Debian",  "Ubuntu", "Mint"]
 
   - name: Installing rofi for nicer package searching in i3
     ansible.builtin.package:

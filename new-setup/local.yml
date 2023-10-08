@@ -1,0 +1,88 @@
+---
+
+- hosts: localhost
+  connection: local 
+  become: true
+  pre_tasks:
+    - name: pre-run | update package cache (Arch, Manjaro)
+      tags: always
+      pacman: update_cache=yes
+      changed_when: False
+      when: ansible_distribution in ["Archlinux", "Manjaro"]
+
+    - name: pre-run | update package cache (Fedora)
+      tags: always
+      dnf: update_cache=yes
+      changed_when: False
+      when: ansible_distribution in ["Fedora"]
+
+    - name: pre-run | update package cache (Debian, Linux Mint)
+      tags: always
+      apt: update_cache=yes
+      changed_when: False
+      when: ansible_distribution in ["Debian", "Linux Mint"]
+
+  tasks:
+  - name: Install system packages
+    package:
+      name: 
+        - wget
+        - curl
+        - flatpak
+        - htop
+        - keepassxc
+        - ripgrep
+        - terminator
+        - tmux
+        - zsh
+
+  - name: Install Window Manager and corresponding packages
+    packages:
+      name: 
+        - arandr
+        - i3
+        - rofi
+
+  - name: Install media packages
+    packages:
+      name: 
+        - ffmpeg
+        - gimp
+        - obs-studio
+        - vlc
+
+  - name: Add remote access to Flatpak
+    ansible.builtin.shell:
+      cmd: sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+  # below are additonal tasks and packages that at distro specific
+  - include: ./arch-ansible.yml
+    when: ansible_distribution in ["Archlinux", "Manjaro"]
+
+  - include: ./fedora-ansible.yml
+    when: ansible_distribution in ["Fedora"]
+
+  - include: ./debian-ansible.yml
+    when: ansible_distribution in ["Debian", "Linux Mint"]
+
+
+
+          #  - name: copy wallpaper file
+          #    copy:
+          #      src: backgrounds/DrWho4.PNG
+          #      dest: /usr/share/backgrounds/DrWhor4.PNG
+          #      owner: root
+          #      group: root
+          #
+          #  - name: set wallpaper
+          #    dconf: 
+          #      key: "org/gnome/desktop/background/picture/picture-uri"
+          #      value: "'file:///user/shar/backgrounds/DrWho4.PNG'"
+          #
+          #  - name: set wallpaper position
+          #    become_user: j
+          #    dconf:
+          #      key: "/org/gnome/desktop/background/picture-options"
+          #      value: "'zoom'"
+
+

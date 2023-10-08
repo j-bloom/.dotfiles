@@ -1,0 +1,19 @@
+# This file will download packages with Debian specific naming
+  - name: Install system packages
+    package:
+      name:
+        - fd-find
+        - silversearcher-ag
+
+
+  - name: Install Language packages
+    packages:
+      name: 
+        - golang
+        - python3-venv
+
+
+  - name: Install media packages
+    packages:
+      name: 
+        - v4l2loopback-dkms

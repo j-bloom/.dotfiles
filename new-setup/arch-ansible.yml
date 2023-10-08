@@ -1,0 +1,28 @@
+# This file will download packages with Arch specific naming
+  - name: Install system packages
+    package:
+      name: 
+        - dconf
+        - fd
+        - the_silver_searcher
+        - emacs
+
+  - name: Install Language packages
+    packages:
+      name: 
+        - go
+        - python-pylint-venv 
+
+
+  - name: Install media packages
+    packages:
+      name: 
+        - v4l2loopback-dkms
+
+  - name: Install chat/school packages
+    packages:
+      name: 
+        - discord
+        - obsidian
+        - lutris
+        - steam
