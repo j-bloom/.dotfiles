@@ -8,7 +8,6 @@
     ansible.builtin.package:
       update-cache: yes
 
-#####      Uncomment if i3wm is desired       #####
   - name: Installing i3 
     ansible.builtin.package:
       name: i3
@@ -42,13 +41,11 @@
     ansible.builtin.package:
       name: 
         - fd-find
-        - fd
 
   - name: Installing silversearcher
     ansible.builtin.package:
       name: 
         - silversearcher-ag
-        - the_silver_searcher
 
   - name: Installing GIMP
     ansible.builtin.package:
