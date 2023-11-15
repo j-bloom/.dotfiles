@@ -1,5 +1,5 @@
 ###Currently not working in script, needs to be manually entered
-echo -e "Using NVM to install and use lts version of node***\n"
+echo -e "\n***Using NVM to install and use lts version of node***\n"
 sleep 2
 nvm install --lts #ensure this is run before npm packages
 sleep 1
