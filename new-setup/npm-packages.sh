@@ -1,9 +1,11 @@
+#!/bin/bash
+
 ###Currently not working in script, needs to be manually entered
 echo -e "\n***Using NVM to install and use lts version of node***\n"
 sleep 2
 nvm install --lts #ensure this is run before npm packages
 sleep 1
-nvm use --lts`
+nvm use --lts
 
 npm install -g vscode-langservers-extracted
 sleep 1

@@ -1,0 +1,67 @@
+---
+
+- hosts: localhost
+  become: true
+  tasks:
+
+######################Development Packages######################
+### Android Studio through Snap or Flatpak ###
+  - name: Installing Android Studio as snap package
+    community.general.snap:
+      name: android-studio
+      classic: true
+      channel: latest/stable
+    when: ansible_distribution == 'Ubuntu'
+
+  - name: Install Android Studio from Flathub
+    community.general.flatpak:
+      name: com.google.AndroidStudio
+      state: present
+    when: ansible_distribution == 'Arch Linux' or ansible_distribution == 'Fedora'
+
+### Emacs based on distro ###
+  - name: Installing emacs as snap package
+    community.general.snap:
+      name: emacs
+      classic: true
+      channel: latest/stable
+    when: ansible_distribution == 'Ubuntu'
+
+  - name: Installing emacs
+    ansible.builtin.package:
+      name: emacs
+    when: ansible_distribution == 'Arch Linux' or ansible_distribution == 'Fedora'
+
+### Visual Studio Code through Snap or Flatpak ###
+  - name: Installing Visual Studio Code as snap package
+    community.general.snap:
+      name: code
+      classic: true
+      channel: latest/stable
+    when: ansible_distribution == 'Ubuntu'
+
+  - name: Install Visual Studio Code from Flathub
+    community.general.flatpak:
+      name: com.visualstudio.code
+      state: present
+    when: ansible_distribution == 'Arch Linux' or ansible_distribution == 'Fedora'
+
+### IntelliJ Community through Snap or Flatpak ###
+  - name: Installing IntelliJ Community as snap package
+    community.general.snap:
+      name: intellij-idea-community
+      classic: true
+      channel: latest/stable
+    when: ansible_distribution == 'Ubuntu'
+
+  - name: Install InteliJ Community from Flathub
+    community.general.flatpak:
+      name: com.jetbrains.IntelliJ-IDEA-Community
+      state: present
+    when: ansible_distribution == 'Arch Linux' or ansible_distribution == 'Fedora'
+
+
+  - name: Installing NVM from GitHub for Node Management
+    ansible.builtin.shell:
+      cmd: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+

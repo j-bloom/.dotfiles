@@ -1,0 +1,33 @@
+---
+
+- hosts: localhost
+  become: true
+  tasks:
+
+######################Media Packages######################
+  - name: Installing GIMP
+    ansible.builtin.package:
+      name: gimp
+
+  - name: Installing OBS Studio and support packages
+    ansible.builtin.package:
+      name:
+        - v4l2loopback-dkms
+        - ffmpeg
+        - obs-studio
+    when: ansible_distribution == 'Arch Linux' or  ansible_distribution == 'Ubuntu'
+    
+  - name: Installing OBS Studio and support packages
+    ansible.builtin.package:
+      name:
+        - ffmpeg-free
+        - obs-studio
+    when: ansible_distribution == 'Fedora'
+
+  - name: Installing VLC media player
+    ansible.builtin.package:
+      name: vlc
+
+  - name: Installing kdenlive 
+    ansible.builtin.package:
+      name: kdenlive

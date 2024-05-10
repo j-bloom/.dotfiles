@@ -9,7 +9,3 @@ ssh -T git@github.com
 echo -e "\n***Generating password for Github SSH***\n"
 sleep 3
 ssh-keygen -p -f ~/.ssh/id_ed25519
-
-echo -e "\n***Calling file to install NVM***\n"
-sleep 3
-source npm-packages.sh

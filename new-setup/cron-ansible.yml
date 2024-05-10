@@ -1,8 +1,0 @@
-  #Cron jobs to update the system weekly based on system
-  - name:
-    cron:
-      name: ansible weekly update
-      user: j
-      special_time: weekly
-      job: sudo apt update && sudo apt upgrade -y
-

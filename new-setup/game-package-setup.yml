@@ -1,0 +1,14 @@
+---
+
+- hosts: localhost
+  become: true
+  tasks:
+
+######################Games Packages######################
+  - name: Installing Steam
+    ansible.builtin.package:
+      name: steam
+
+  - name: Installing Lutris
+    ansible.builtin.package:
+      name: lutris

@@ -1,0 +1,63 @@
+---
+
+- hosts: localhost
+  become: true
+  tasks:
+
+######################System Packages######################
+  - name: update repository index
+    ansible.builtin.package:
+      update_cache: yes
+
+  - name: Installing htop
+    ansible.builtin.package:
+      name: htop
+
+  - name: Installing curl
+    ansible.builtin.package:
+      name: curl
+
+  - name: Installing ripgrep
+    ansible.builtin.package:
+      name: ripgrep
+
+  - name: Installing fd-find
+    ansible.builtin.package:
+      name: fd-find
+    when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Fedora'
+      
+  - name: Installing fd-find
+    ansible.builtin.package:
+      name: fd
+    when: ansible_distribution == 'Arch Linux'
+
+  - name: Installing silversearcher
+    ansible.builtin.package:
+      name: silversearcher-ag
+    when: ansible_distribution == 'Ubuntu'
+
+  - name: Installing silversearcher
+    ansible.builtin.package:
+      name: the_silver_searcher
+    when: ansible_distribution == 'Arch Linux' or ansible_distribution == 'Fedora'
+
+  - name: Installing Terminator terminal
+    ansible.builtin.package:
+      name: terminator
+
+  - name: Installing keepassxc
+    ansible.builtin.package:
+      name: keepassxc
+
+  - name: Installing tmux
+    ansible.builtin.package:
+      name: tmux
+
+  - name: Installing Flatpak
+    ansible.builtin.package:
+      name: flatpak
+
+  - name: Add remote access to Flatpak
+    ansible.builtin.shell:
+      cmd: sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    when: ansible_distribution == 'Fedora'
