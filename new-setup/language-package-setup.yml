@@ -75,7 +75,8 @@
         - python3-pylint-venv
         - python3-pip
     when: ansible_distribution == 'Fedora'
-    
+
+### DotNet sdk based on distro ###
   - name: Installing DotNet
     ansible.builtin.package:
       name: dotnet-sdk-8.0
