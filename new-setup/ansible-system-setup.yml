@@ -17,11 +17,11 @@
     ansible.builtin.package:
       name: curl
 
-  - name: Installing i3 Window Manager
+  - name: Installing i3 window manager
     ansible.builtin.package:
       name: i3
 
-  - name: Installing Rofi
+  - name: Installing rofi
     ansible.builtin.package:
       name: rofi
 
