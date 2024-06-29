@@ -13,4 +13,6 @@ npm install -g eslint
 sleep 1
 npm install -g typescript-language-server typescript
 sleep 1
+npm install -g @angular/cli
+sleep 1
 npm i -g pyright install dotnet7

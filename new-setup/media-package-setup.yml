@@ -31,3 +31,9 @@
   - name: Installing kdenlive 
     ansible.builtin.package:
       name: kdenlive
+      
+  - name: Installing Spotify as snap package
+    community.general.snap:
+      name: spotify
+      channel: latest/stable
+    when: ansible_distribution == 'Ubuntu'

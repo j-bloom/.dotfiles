@@ -46,10 +46,10 @@
       state: present
     when: ansible_distribution == 'Arch Linux' or ansible_distribution == 'Fedora'
 
-### IntelliJ Community through Snap or Flatpak ###
-  - name: Installing IntelliJ Community as snap package
+### Eclipse through Snap or Flatpak ###
+  - name: Installing Eclipse as snap package
     community.general.snap:
-      name: intellij-idea-community
+      name: eclipse
       classic: true
       channel: latest/stable
     when: ansible_distribution == 'Ubuntu'
@@ -61,7 +61,4 @@
     when: ansible_distribution == 'Arch Linux' or ansible_distribution == 'Fedora'
 
 
-  - name: Installing NVM from GitHub for Node Management
-    ansible.builtin.shell:
-      cmd: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 

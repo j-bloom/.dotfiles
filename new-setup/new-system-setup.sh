@@ -151,3 +151,48 @@ pushd ~/
 mv .emacs.d/ .emacs.d-old
 git clone https://github.com/j-bloom/.emacs.d.git
 popd
+
+echo -e "\n***Pulling NVM from GitHub for NodeJS management***\n"
+sleep 5
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+echo -e "\n***Install Microsoft Fonts***\n"
+sleep 5
+sudo apt install ttf-mscorefonts-installer
+sudo apt install install fontconfig
+sudo fc-cache -f -v
+
+###### This will conduct PHP clean up and tasks to enable services######
+if cat /etc/*release | grep ^NAME | grep Fedora; then
+  echo -e "\n***Updating and Upgrading new install***\n"
+  sleep 3
+  sudo systemctl enable httpd.service
+  sudo systemctl start httpd.service
+
+# Grant firewall access
+  sudo firewall-cmd --permanent --add-service=http
+  sudo firewall-cmd --permanent --add-service=https
+
+# Reload firewall
+  sudo systemctl reload firewalld
+
+# MariaDB
+  sudo systemctl enable mariadb.service
+  sudo systemctl start mariadb.service
+
+  sudo mysql_secure_installation
+# Options for above (n), (y), (y), (y)
+
+  sudo systemctl restart httpd
+
+  echo -e "\n***Creating info.php to test PHP setup***\n"
+  sleep 3
+# Update info.php file to test setup
+  echo "<?php" | sudo tee -a /var/www/html/info.php
+  echo "phpinfo()" | sudo tee -a /var/www/html/info.php
+  echo "?>" | sudo tee -a /var/www/html/info.php
+
+else
+  echo "OS NOT DETECTED, couldn't perform PHP cleanup in $PACKAGE"
+  exit 1
+fi

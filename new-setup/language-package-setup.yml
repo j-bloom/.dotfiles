@@ -75,9 +75,20 @@
         - python3-pylint-venv
         - python3-pip
     when: ansible_distribution == 'Fedora'
-
-### DotNet sdk based on distro ###
-  - name: Installing DotNet
+    
+  - name: Installing dotnet
     ansible.builtin.package:
       name: dotnet-sdk-8.0
+
+  - name: Installing LAMP Stack
+    ansible.builtin.package:
+      name:
+        - httpd
+        - mariadb-server
+        - php
+        - php-common
+        - php-mysqlnd
+        - php-gd
+        - php-cli
+        - php-mbstring
     when: ansible_distribution == 'Fedora'

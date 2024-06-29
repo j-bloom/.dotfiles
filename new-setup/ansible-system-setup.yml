@@ -17,14 +17,6 @@
     ansible.builtin.package:
       name: curl
 
-  - name: Installing i3 window manager
-    ansible.builtin.package:
-      name: i3
-
-  - name: Installing rofi
-    ansible.builtin.package:
-      name: rofi
-
   - name: Installing ripgrep
     ansible.builtin.package:
       name: ripgrep

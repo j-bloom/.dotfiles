@@ -11,6 +11,8 @@ Please give the setup a read through to see if anything you want to use is comme
 This script will setup a system to what I find to be a usable (starting point) state in Fedora, Ubuntu and Arch(btw) ;P  
 It will also create a Projects Folder where I personally like to store projects and code.
 
+*** Ansible packages are modularized to allow people to install or remove packages easily. If you have your own media packages or games packages you like and don't like what I have just remove the call to that yaml file in the setup script. ***
+
 ## Base packages installed
 ### Ansible - needed to install most packages.  
 Packages are seperated into yaml files based on type. This is for ease of maintenence, and if anyone wants to use this config it is easier to add/remove packages. You can also opt to remove entire categories of pacakges.  
@@ -30,10 +32,10 @@ Packages are broken up into the following categories:
 Nodejs OR NVM (Node Version Manager)
 Install NVM from GitHub  
 "https://github.com/nvm-sh/nvm#installing-and-updating"
-#### Installation for NVM is also in script inside "development-package-setup.yml"
+#### Installation for NVM is also in script inside "new-system-setup.sh"
 
 ## LSP installs - some options for languages I use
-- clangd
+- clang/clangd
 - vscode-langservers-extracted
 - eslint
 - typescript-language-server typescript
@@ -42,11 +44,11 @@ Install NVM from GitHub
 - csharpier
 - Golang
   
-## Neovim - NOT CURRENTLY MAINTAINED
-This has a basic setup using "Packer" package manager.  
-Maybe I will update this if I start using Neovim again...  
+## Neovim
+This has a basic setup using "Lazy" package manager.  
+This setup is still being developed and configured. 
 
-## Emacs
+## Emacs - NOT CURRENTLY MAINTAINED
 - script will install emacs, then rename original ".emacs.d/" to ".emacs.d.old/"
 - script will then copy the .emacs configs to the home directory.
 #### Emacs README instructions will need to be followed to load all melpa/elpa packages
@@ -60,3 +62,5 @@ Maybe I will update this if I start using Neovim again...
 ### i3WM
 ### Extras for i3
 - rofi - better file searching
+- arandr - to graphically manage my monitor's
+- compton - compositor for x11. Nothing against Wayland, just haven't moved over yet... ¯\_(ツ)_/¯
